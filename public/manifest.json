@@ -1,0 +1,19 @@
+{
+  "name": "FormulaPad",
+  "short_name": "FormulaPad",
+  "description": "Visual Interactive STEM Formula & Physics Calculator for FreeAppStore",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "min_viewport_width": 360,
+  "background_color": "#09090b",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

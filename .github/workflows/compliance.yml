@@ -1,0 +1,37 @@
+name: FreeAppStore Compliance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: Verify Bundle Size (<300KB)
+        run: |
+          pnpm run build
+          TOTAL_GZIP=$(gzip -9 -c dist/assets/*.js dist/assets/*.css | wc -c)
+          echo "Total gzipped bundle size: ${TOTAL_GZIP} bytes"
+          if [ "$TOTAL_GZIP" -gt 307200 ]; then
+            echo "Error: Gzipped bundle exceeds 300KB limit!"
+            exit 1
+          fi
+          echo "Bundle size within FreeAppStore quota."
