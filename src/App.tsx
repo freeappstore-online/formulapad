@@ -251,9 +251,9 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
   return (
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
-        <label className="text-[11px] sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
-          {param.label} <span className="font-mono text-zinc-500 dark:text-zinc-400">({param.symbol})</span>
-        </label>
+        <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
+  {param.label.includes(param.symbol) ? param.label : `${param.label} (${param.symbol})`}
+</label>
 
         {/* Editable Hybrid Badge / Input */}
         <div className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xs">
@@ -1188,7 +1188,7 @@ export default function App() {
                             return (
                               <div key={p.key} className="space-y-0.5 sm:space-y-1">
                                 <div className="flex justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-                                  <span>{p.label} ({p.symbol})</span>
+                                  <span>{p.label.includes(p.symbol) ? p.label : `${p.label} (${p.symbol})`}</span>
                                   <span className="text-emerald-400 font-bold">{val} {p.unit}</span>
                                 </div>
                                 <div className="w-full h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">
