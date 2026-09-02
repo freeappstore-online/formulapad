@@ -251,8 +251,14 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
   return (
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
-       <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
-  {param.label} <span className="font-mono text-zinc-400">({param.symbol})</span>
+     <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
+  {param.label.includes(`(${param.symbol})`) ? (
+    param.label
+  ) : (
+    <>
+      {param.label} <span className="font-mono text-zinc-400">({param.symbol})</span>
+    </>
+  )}
 </label>
 
         {/* Editable Hybrid Badge / Input */}
