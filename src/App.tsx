@@ -926,7 +926,7 @@ export default function App() {
                       {item.equation}
                     </div>
 
-                    <p className="text-xs text-[var(--muted,#475569)] line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -1112,12 +1112,13 @@ export default function App() {
                         ))
                       )}
                     </div>
-
                     {/* Formula Description Card */}
-                    <div className="p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] border border-[var(--border,#e2e8f0)] text-[10px] sm:text-xs text-[var(--muted,#475569)] leading-relaxed">
-                      <strong className="text-[var(--ink,#0f172a)] font-semibold">About this formula: </strong>
-                      {activeFormula.description}
-                    </div>
+<div className="p-2 sm:p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-[10px] sm:text-xs text-zinc-300 leading-relaxed">
+  <strong className="text-zinc-100 font-semibold">About this formula: </strong>
+  {activeFormula.description}
+</div>
+                    
+                    
                   </div>
                 </div>
 

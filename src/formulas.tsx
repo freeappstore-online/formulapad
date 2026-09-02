@@ -785,9 +785,9 @@ export const FORMULA_REGISTRY: FormulaItem[] = [
     equation: 'n₁ · sin(θ₁) = n₂ · sin(θ₂)',
     description: 'Calculates the refraction angle θ₂ when light transitions across an optical boundary.',
     params: [
-      { key: 'n1', label: 'Index 1 (n₁)', symbol: 'n₁', unit: '', defaultVal: 1.0, min: 1.0, max: 3.0, step: 0.05, presets: [{ label: 'Air (1.00)', value: 1.0 }, { label: 'Water (1.33)', value: 1.33 }, { label: 'Glass (1.50)', value: 1.50 }] },
-      { key: 'theta1', label: 'Angle of Incidence (θ₁)', symbol: 'θ₁', unit: '°', defaultVal: 45, min: 1, max: 89, step: 1, presets: [{ label: '30°', value: 30 }, { label: '45°', value: 45 }, { label: '60°', value: 60 }] },
-      { key: 'n2', label: 'Index 2 (n₂)', symbol: 'n₂', unit: '', defaultVal: 1.5, min: 1.0, max: 3.0, step: 0.05, presets: [{ label: 'Water (1.33)', value: 1.33 }, { label: 'Glass (1.50)', value: 1.5 }, { label: 'Diamond (2.42)', value: 2.42 }] },
+      { key: 'n1', label: 'Index 1', symbol: 'n₁', unit: '', defaultVal: 1.0, min: 1.0, max: 3.0, step: 0.05, presets: [{ label: 'Air (1.00)', value: 1.0 }, { label: 'Water (1.33)', value: 1.33 }, { label: 'Glass (1.50)', value: 1.50 }] },
+      { key: 'theta1', label: 'Angle of Incidence', symbol: 'θ₁', unit: '°', defaultVal: 45, min: 1, max: 89, step: 1, presets: [{ label: '30°', value: 30 }, { label: '45°', value: 45 }, { label: '60°', value: 60 }] },
+      { key: 'n2', label: 'Index 2', symbol: 'n₂', unit: '', defaultVal: 1.5, min: 1.0, max: 3.0, step: 0.05, presets: [{ label: 'Water (1.33)', value: 1.33 }, { label: 'Glass (1.50)', value: 1.5 }, { label: 'Diamond (2.42)', value: 2.42 }] },
     ],
     calculate: (v) => {
       const rad1 = (v.theta1 * Math.PI) / 180;
