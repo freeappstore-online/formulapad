@@ -28,6 +28,11 @@ import { FormulaItem, ParamDef, SubjectType } from './types';
 // Initialize FreeAppStore SDK
 const fas = initApp({ appId: 'formula-pad' });
 
+function cleanLabel(label: string): string {
+  // If the label ends with parentheses like "(n)" or "(x₁)", remove them
+  return label.replace(/\s*\([^)]*\)\s*$/, '').trim();
+}
+
 /**
  * Responsive Visual Simulation Canvas with Ultra-Wide Mobile Zoom Support (10% - 300%)
  * Allows ultra-deep zoom out to 0.10 (10%) without artificial clamping, maintaining centered alignment and fluid touch stability.
@@ -251,14 +256,8 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
   return (
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
-     <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
-  {param.label.includes(`(${param.symbol})`) ? (
-    param.label
-  ) : (
-    <>
-      {param.label} <span className="font-mono text-zinc-400">({param.symbol})</span>
-    </>
-  )}
+    <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
+  {cleanLabel(param.label)} <span className="font-mono text-zinc-400">({param.symbol})</span>
 </label>
 
         {/* Editable Hybrid Badge / Input */}
@@ -1193,7 +1192,7 @@ export default function App() {
                             return (
                               <div key={p.key} className="space-y-0.5 sm:space-y-1">
                                 <div className="flex justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-                                  <span>{p.label.includes(`(${p.symbol})`) ? p.label : `${p.label} (${p.symbol})`}</span>
+                                  <span>{cleanLabel(p.label)} ({p.symbol})</span>
                                   <span className="text-emerald-400 font-bold">{val} {p.unit}</span>
                                 </div>
                                 <div className="w-full h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">
