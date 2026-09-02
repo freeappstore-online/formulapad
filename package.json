@@ -4,11 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-   "dev": "pnpm --dir web dev",
+    "dev": "pnpm --dir web dev",
     "build": "pnpm --dir web build && node -e \"require('fs').cpSync('web/dist', 'dist', {recursive: true})\"",
-    "preview": "pnpm --dir web preview",
-    "clean": "rm -rf dist server.js web/dist",
-    "lint": "tsc --noEmit"
+    "preview": "pnpm --dir web preview"
   },
   "dependencies": {
     "@freeappstore/sdk": "^0.14.26",
