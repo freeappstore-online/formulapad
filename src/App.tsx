@@ -28,9 +28,16 @@ import { FormulaItem, ParamDef, SubjectType } from './types';
 // Initialize FreeAppStore SDK
 const fas = initApp({ appId: 'formula-pad' });
 
-function cleanLabel(label: string): string {
-  // If the label ends with parentheses like "(n)" or "(x₁)", remove them
-  return label.replace(/\s*\([^)]*\)\s*$/, '').trim();
+function cleanLabel(label: string, symbol?: string): string {
+  // 1. Remove trailing parentheses like "(a)", "(n)", or "(x₁)"
+  let cleaned = label.replace(/\s*\([^)]*\)\s*$/, '').trim();
+  
+  // 2. Remove trailing standalone symbol word like "Coefficient a" -> "Coefficient" or "Side b" -> "Side"
+  if (symbol && cleaned.toLowerCase().endsWith(symbol.toLowerCase())) {
+    cleaned = cleaned.slice(0, -symbol.length).trim();
+  }
+  
+  return cleaned;
 }
 
 /**
@@ -257,7 +264,7 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
     <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
-  {cleanLabel(param.label)} <span className="font-mono text-zinc-400">({param.symbol})</span>
+  {cleanLabel(param.label, param.symbol)} <span className="font-mono text-zinc-400">({param.symbol})</span>
 </label>
 
         {/* Editable Hybrid Badge / Input */}
@@ -1192,7 +1199,7 @@ export default function App() {
                             return (
                               <div key={p.key} className="space-y-0.5 sm:space-y-1">
                                 <div className="flex justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-                                  <span>{cleanLabel(p.label)} ({p.symbol})</span>
+                                  <span>{cleanLabel(p.label, p.symbol)} ({p.symbol})</span>
                                   <span className="text-emerald-400 font-bold">{val} {p.unit}</span>
                                 </div>
                                 <div className="w-full h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">
