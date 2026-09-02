@@ -1187,7 +1187,7 @@ export default function App() {
                             return (
                               <div key={p.key} className="space-y-0.5 sm:space-y-1">
                                 <div className="flex justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-                                  <span>{p.label} ({p.symbol})</span>
+                                  <span>{p.label.includes(`(${p.symbol})`) ? p.label : `${p.label} (${p.symbol})`}</span>
                                   <span className="text-emerald-400 font-bold">{val} {p.unit}</span>
                                 </div>
                                 <div className="w-full h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">
