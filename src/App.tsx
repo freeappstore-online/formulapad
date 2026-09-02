@@ -251,8 +251,8 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
   return (
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
-        <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
-  {param.label.includes(param.symbol) ? param.label : `${param.label} (${param.symbol})`}
+       <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
+  {param.label} <span className="font-mono text-zinc-400">({param.symbol})</span>
 </label>
 
         {/* Editable Hybrid Badge / Input */}
@@ -926,9 +926,9 @@ export default function App() {
                       {item.equation}
                     </div>
 
-                    <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
-                      {item.description}
-                    </p>
+                   <p className="text-xs text-zinc-400 leading-relaxed">
+  {item.description}
+</p>
                   </div>
 
                   <div className="pt-2 border-t border-[var(--border,#e2e8f0)] flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
@@ -1112,13 +1112,12 @@ export default function App() {
                         ))
                       )}
                     </div>
+
                     {/* Formula Description Card */}
-<div className="p-2 sm:p-3 rounded-xl bg-zinc-800/60 border border-zinc-700/50 text-[10px] sm:text-xs text-zinc-300 leading-relaxed">
-  <strong className="text-zinc-100 font-semibold">About this formula: </strong>
+                    <div className="p-2 sm:p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-[10px] sm:text-xs text-zinc-400 leading-relaxed">
+  <strong className="text-zinc-200 font-semibold">About this formula: </strong>
   {activeFormula.description}
 </div>
-                    
-                    
                   </div>
                 </div>
 
@@ -1188,7 +1187,7 @@ export default function App() {
                             return (
                               <div key={p.key} className="space-y-0.5 sm:space-y-1">
                                 <div className="flex justify-between text-[10px] sm:text-xs font-mono text-zinc-300">
-                                  <span>{p.label.includes(p.symbol) ? p.label : `${p.label} (${p.symbol})`}</span>
+                                  <span>{p.label} ({p.symbol})</span>
                                   <span className="text-emerald-400 font-bold">{val} {p.unit}</span>
                                 </div>
                                 <div className="w-full h-1.5 sm:h-2 bg-zinc-800 rounded-full overflow-hidden">

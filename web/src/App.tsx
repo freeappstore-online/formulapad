@@ -251,9 +251,9 @@ function ParamControl({ param, value, onChange }: ParamControlProps) {
   return (
     <div className="space-y-1 sm:space-y-1.5 p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] dark:bg-zinc-900 border border-[var(--border,#e2e8f0)] dark:border-zinc-800 transition-colors">
       <div className="flex items-center justify-between gap-1.5">
-        <label className="text-[11px] sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate">
-          {param.label} <span className="font-mono text-zinc-500 dark:text-zinc-400">({param.symbol})</span>
-        </label>
+       <label className="text-[11px] sm:text-sm font-semibold text-zinc-100 truncate">
+  {param.label} <span className="font-mono text-zinc-400">({param.symbol})</span>
+</label>
 
         {/* Editable Hybrid Badge / Input */}
         <div className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-2xs">
@@ -926,9 +926,9 @@ export default function App() {
                       {item.equation}
                     </div>
 
-                    <p className="text-xs text-[var(--muted,#475569)] line-clamp-2 leading-relaxed">
-                      {item.description}
-                    </p>
+                   <p className="text-xs text-zinc-400 leading-relaxed">
+  {item.description}
+</p>
                   </div>
 
                   <div className="pt-2 border-t border-[var(--border,#e2e8f0)] flex items-center justify-between text-xs font-bold text-emerald-600 dark:text-emerald-400">
@@ -1114,10 +1114,10 @@ export default function App() {
                     </div>
 
                     {/* Formula Description Card */}
-                    <div className="p-2 sm:p-3 rounded-xl bg-[var(--surface-subtle,#f8fafc)] border border-[var(--border,#e2e8f0)] text-[10px] sm:text-xs text-[var(--muted,#475569)] leading-relaxed">
-                      <strong className="text-[var(--ink,#0f172a)] font-semibold">About this formula: </strong>
-                      {activeFormula.description}
-                    </div>
+                    <div className="p-2 sm:p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-[10px] sm:text-xs text-zinc-400 leading-relaxed">
+  <strong className="text-zinc-200 font-semibold">About this formula: </strong>
+  {activeFormula.description}
+</div>
                   </div>
                 </div>
 
