@@ -26,7 +26,7 @@ import { FORMULA_REGISTRY } from './formulas';
 import { FormulaItem, ParamDef, SubjectType } from './types';
 
 // Initialize FreeAppStore SDK
-const fas = initApp({ appId: 'formula-pad' });
+const fas = initApp({ appId: 'formulapad' });
 
 function cleanLabel(label: string, symbol?: string): string {
   // 1. Remove trailing parentheses like "(a)", "(n)", or "(x₁)"
