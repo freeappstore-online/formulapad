@@ -1,7 +1,7 @@
 {
   "name": "formulapad",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.30.3",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "preview": "pnpm --dir web preview"
   },
   "dependencies": {
-    "@freeappstore/sdk": "^0.14.26",
+    "@freeappstore/sdk": "^0.17.2",
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
